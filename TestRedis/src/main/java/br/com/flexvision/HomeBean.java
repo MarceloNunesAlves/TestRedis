@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.context.annotation.Scope;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 @Controller("homeBean")
-@Scope("session")
+@SessionScope
 public class HomeBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -9,5 +9,10 @@
 	<context:annotation-config />
 	
 	<context:component-scan base-package="br.com.flexvision" />
-
+	
+	<bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+		<property name="maxInactiveIntervalInSeconds"><value>120</value></property>
+	</bean>
+	
+	<bean class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory"/>
 </beans>

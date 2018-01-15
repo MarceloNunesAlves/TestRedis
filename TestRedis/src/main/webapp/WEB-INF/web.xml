@@ -18,15 +18,31 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>server</param-value>
 	</context-param>
-	<!-- <servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping> -->
+	<context-param>
+		<param-name>jsf.omnifaces.FACES_VIEWS_ENABLED</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.mojarra.preferXHTML</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.butterfaces.provideJQuery</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.myfaces.PRETTY_HTML</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 	<!-- Necesario para Spring -->
 	<context-param>

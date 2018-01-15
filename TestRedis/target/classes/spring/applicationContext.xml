@@ -14,5 +14,5 @@
 		<property name="maxInactiveIntervalInSeconds"><value>120</value></property>
 	</bean>
 	
-	<bean class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory" p:port="6379" p:password="secret"/>
+	<bean class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory"/>
 </beans>

@@ -6,7 +6,7 @@
 	<display-name>Archetype Created Web Application</display-name>
 
 	<welcome-file-list>
-	  <welcome-file>/index.jsf</welcome-file>
+	  <welcome-file>index.jsf</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
@@ -18,10 +18,31 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-	<!-- <servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.omnifaces.FACES_VIEWS_ENABLED</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.mojarra.preferXHTML</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.butterfaces.provideJQuery</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jsf.myfaces.PRETTY_HTML</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 	<!-- Necesario para Spring -->
 	<context-param>
@@ -32,8 +53,20 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- Persistir sesiones en Redis--> 
+	<filter>
+    	<filter-name>springSessionRepositoryFilter</filter-name>
+    	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>springSessionRepositoryFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
 	<!-- TEMPO DE SESSÃO -->
 	<session-config>
-		<session-timeout>60</session-timeout>
+		<session-timeout>2</session-timeout>
 	</session-config>
 </web-app>

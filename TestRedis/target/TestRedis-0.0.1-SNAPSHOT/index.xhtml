@@ -11,35 +11,24 @@
             <meta http-equiv="X-UA-Compatible" content="IE=8" />
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
             <meta name="robots" content="noindex, nofollow"/>
+				<meta http-equiv="Pragma" content="no-cache"/>
+        		<meta http-equiv="Expires" content="-1"/>
             <title>Monitoração Teste - JSF</title>
         </f:facet>
     </h:head>
 
     <h:body>
         <h:form id="form">
-            <h1>Page loaded from: #{homeBean.applicationTitle}</h1>
-
             <p:commandButton value="Add item" id="ajax" update="msgs listProduct" actionListener="#{homeBean.addItem}"/>
-            <h:link value="JSF managed beans" outcome="jsf-input"/>
-
             <p:growl id="msgs" showDetail="true" />
-            <p:dataTable id="listProduct" var="product" value="#{homeBean.products}" draggableRows="true">
-                <p:ajax event="rowReorder" listener="#{homeBean.onRowReorder}" update=":form:msgs" />
-                <f:facet name="header">
-                    Draggable Rows
-                </f:facet>
-
+            <p:dataTable id="listProduct" var="product" value="#{homeBean.products}">
                 <p:column headerText="Description">
                     <h:outputText value="#{product.description}" />
                 </p:column>
-
                 <p:column headerText="Price">
                     <h:outputText value="#{product.price}" />
                 </p:column>
             </p:dataTable>
-            <br/><br/>
-            <br/>
-            <h:outputText value="#{homeBean.values}"/>
         </h:form>
     </h:body>
 </f:view>

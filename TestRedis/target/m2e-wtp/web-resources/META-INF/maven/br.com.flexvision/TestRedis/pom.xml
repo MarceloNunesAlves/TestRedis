@@ -83,22 +83,6 @@
 	    <artifactId>lettuce</artifactId>
 	    <version>3.5.0.Final</version>
 	</dependency>
-	<dependency>
-	    <groupId>org.omnifaces</groupId>
-	    <artifactId>omnifaces</artifactId>
-	    <version>1.14</version>
-	</dependency>
-	<dependency>
-	   <groupId>de.larmic.butterfaces</groupId>
-	   <artifactId>components</artifactId>
-	   <version>2.1.24</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.apache.myfaces.core</groupId>
-	    <artifactId>myfaces-bundle</artifactId>
-	    <version>2.2.12</version>
-	</dependency>
-
   </dependencies>
   <build>
     <plugins>

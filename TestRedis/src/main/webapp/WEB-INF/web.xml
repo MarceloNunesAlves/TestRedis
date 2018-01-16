@@ -24,6 +24,58 @@
 	</servlet-mapping>
 
 	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.SECRET</param-name>
+		<param-value>primefaces</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.INTERPOLATE_CLIENT_SIDE_VALIDATION_MESSAGES</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.DIR</param-name>
+		<param-value>ltr</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.TRANSFORM_METADATA</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.RESET_VALUES</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.EARLY_POST_PARAM_EVALUATION</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.UPLOADER</param-name>
+		<param-value>auto</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.LEGACY_WIDGET_NAMESPACE</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>overcast</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.SUBMIT</param-name>
+		<param-value>full</param-value>
+	</context-param>
+	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>server</param-value>
 	</context-param>
@@ -43,7 +95,24 @@
 		<param-name>jsf.myfaces.PRETTY_HTML</param-name>
 		<param-value>true</param-value>
 	</context-param>
+    <context-param>
+        <param-name>com.sun.faces.enableAgressiveSessionDirtying</param-name>
+        <param-value>true</param-value>
+    </context-param>
+	<context-param>
+	    <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+	    <param-value>false</param-value>
+	</context-param>
 
+	<context-param>
+        <param-name>com.sun.faces.numberOfViewsInSession</param-name>
+        <param-value>20</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>com.sun.faces.numberOfLogicalViews</param-name>
+        <param-value>20</param-value>
+    </context-param>
 	<!-- Necesario para Spring -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -52,7 +121,47 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
 
+	<filter>
+    	<filter-name>includeFilter</filter-name>
+    	<filter-class>br.com.flexvision.IncludeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>includeFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+	<filter>
+    	<filter-name>requestFilter</filter-name>
+    	<filter-class>br.com.flexvision.RequestFilter</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>requestFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter>
+    	<filter-name>forwardFilter</filter-name>
+    	<filter-class>br.com.flexvision.ForwardFilter</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>forwardFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	<filter>
+    	<filter-name>errorFilter</filter-name>
+    	<filter-class>br.com.flexvision.ErrorFilter</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>errorFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>	
+	
 	<!-- Persistir sesiones en Redis--> 
 	<filter>
     	<filter-name>springSessionRepositoryFilter</filter-name>
@@ -64,6 +173,20 @@
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
+	<context-param>
+	  <param-name>com.sun.faces.autoCompleteOffOnViewState</param-name>
+	  <param-value>false</param-value>
+	</context-param>
+	<context-param>
+	  <param-name>com.sun.faces.enableViewStateIdRendering</param-name>
+	  <param-value>false</param-value>
+	</context-param>
+	<!-- 
+	<context-param>
+	  <param-name>com.sun.faces.generateUniqueServerStateIds</param-name>
+	  <param-value>false</param-value>
+	</context-param>
+	 -->
 	
 	<!-- TEMPO DE SESSÃO -->
 	<session-config>

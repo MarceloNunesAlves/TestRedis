@@ -1,9 +1,6 @@
 package br.com.flexvision;
 
 import java.io.Serializable;
-import java.util.Map;
-
-import javax.el.ELResolver;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;

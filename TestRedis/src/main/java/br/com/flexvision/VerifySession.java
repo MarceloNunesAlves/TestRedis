@@ -8,12 +8,8 @@ import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
 public class VerifySession implements PhaseListener, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9103108658461420937L;
 
 	@Override
